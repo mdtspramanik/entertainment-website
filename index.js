@@ -13,7 +13,7 @@ app.get("/", async (req, res) => {
 });
 
 // Fetch and render movie data
-app.get("/movie", async (req, res) => {
+app.get("/movies", async (req, res) => {
   const options = {
     method: "GET",
     url: "https://imdb188.p.rapidapi.com/api/v1/getWeekTop10",
@@ -69,7 +69,7 @@ app.get("/anime", async (req, res) => {
 });
 
 // Fetch and render game data
-app.get("/game", async (req, res) => {
+app.get("/games", async (req, res) => {
   const options = {
     method: "GET",
     url: "https://free-to-play-games-database.p.rapidapi.com/api/games",
