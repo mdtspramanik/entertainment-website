@@ -1,0 +1,74 @@
+<%- include("partials/header.ejs") %>
+
+    <main>
+        <h1 class="text-primary d-flex justify-content-center align-items-center mb-5">Week Top 10 Movies</h1>
+
+        <div class="row">
+            <% if(locals.movies){%>
+                <% movies.forEach(movie=>{ %>
+                    <div class="col-md-4 mb-5">
+                        <div class="card mx-auto" style="width: 18rem;">
+                            <img src="<%=movie.imageUrl%>" class="card-img-top" height="250" alt="<%=movie.title%>">
+                            <div class="card-body">
+                                <% if(movie.title) { %>
+                                    <h5 class="card-title">Title: <%=movie.title%>
+                                    </h5>
+                                    <% }else{ %>
+                                        <h5 class="card-title">Title: <span class="text-warning">Loading...</span></h5>
+                                        <% } %>
+
+                                            <% if(movie.plot) { %>
+                                                <p class="card-text">Plot: <%=movie.plot%>
+                                                </p>
+                                                <% }else{ %>
+                                                    <p class="card-text">Plot: <span
+                                                            class="text-warning">Loading...</span>
+                                                    </p>
+                                                    <% } %>
+                            </div>
+
+                            <ul class="list-group list-group-flush">
+                                <% if(movie.year) { %>
+                                    <li class="list-group-item">Release Year: <%=movie.year%>
+                                    </li>
+                                    <% }else{ %>
+                                        <li class="list-group-item">Release Year: <span
+                                                class="text-warning">Loading...</span>
+                                        </li>
+                                        <% } %>
+
+                                            <% if(movie.country) { %>
+                                                <li class="list-group-item">Country: <%=movie.country%>
+                                                </li>
+                                                <% }else{ %>
+                                                    <li class="list-group-item">Country: <span
+                                                            class="text-warning">Loading...</span>
+                                                        <% } %>
+
+                                                            <% if(movie.rating) { %>
+                                                    <li class="list-group-item fw-semibold text-primary">Rating:
+                                                        <%=movie.rating%>
+                                                    </li>
+                                                    <% }else{ %>
+                                                        <li class="list-group-item fw-semibold text-primary">Rating:
+                                                            <span class="text-warning">Loading...</span>
+                                                        </li>
+                                                        <% } %>
+                            </ul>
+
+                            <div class="card-body mx-auto">
+                                <a href="https://www.youtube.com/results?search_query=<%=movie.title%> movie trailer"
+                                    target="_blank" class="btn btn-primary">View
+                                    trailer</a>
+                            </div>
+                        </div>
+                    </div>
+                    <% }); %>
+
+                        <% }else{ %>
+                            <h1 class="text-center text-warning">No movies found</h1>
+                            <% } %>
+        </div>
+    </main>
+
+    <%- include("partials/footer.ejs") %>

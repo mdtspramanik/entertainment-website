@@ -1,0 +1,66 @@
+<%- include("partials/header.ejs") %>
+
+    <main>
+        <div class="text-info d-flex justify-content-center mb-3">
+            <h3>Hey, let's watch this anime!</h3>
+        </div>
+        <div class="d-flex justify-content-center mb-3">
+            <a href="/random-anime"><button type="button" class="btn btn-info">Pick Again</button></a>
+        </div>
+
+        <div class="row">
+            <% if(locals.anime){ %>
+                <div class="col-md-12 d-flex justify-content-center align-items-center">
+                    <div class="card mx-auto" style="width: 18rem;">
+                        <img src="<%=anime.imageUrl%>" class="card-img-top" height="250" alt="<%=anime.title%>">
+                        <div class="card-body">
+                            <% if(anime.title) { %>
+                                <h5 class="card-title">Title: <%=anime.title%>
+                                </h5>
+                                <% }else{ %>
+                                    <h5 class="card-title">Title: <span class="text-warning">Loading...</span></h5>
+                                    <% } %>
+
+                                        <% if(anime.rank) { %>
+                                            <p class="card-text">Rank: <%=anime.rank%>
+                                            </p>
+                                            <% }else{ %>
+                                                <p class="card-text">Rank: <span class="text-warning">Loading...</span>
+                                                </p>
+                                                <% } %>
+                        </div>
+
+                        <ul class="list-group list-group-flush">
+                            <% if(anime.type) { %>
+                                <li class="list-group-item">Type: <%=anime.type%>
+                                </li>
+                                <% }else{ %>
+                                    <li class="list-group-item">Type: <span class="text-warning">Loading...</span>
+                                    </li>
+                                    <% } %>
+
+                                        <% if(anime.score) { %>
+                                            <li class="list-group-item fw-semibold text-primary">Score:
+                                                <%=anime.score%>
+                                            </li>
+                                            <% }else{ %>
+                                                <li class="list-group-item fw-semibold text-primary">Score: <span
+                                                        class="text-warning">Loading...</span>
+                                                </li>
+                                                <% } %>
+                        </ul>
+
+                        <div class="card-body mx-auto">
+                            <a href="https://www.youtube.com/results?search_query=<%=anime.title%> anime trailer"
+                                target="_blank" class="btn btn-primary">View
+                                trailer</a>
+                        </div>
+                    </div>
+                </div>
+                <% }else{ %>
+                    <h1 class="text-center text-warning">No anime found</h1>
+                    <% } %>
+        </div>
+    </main>
+
+    <%- include("partials/footer.ejs") %>
