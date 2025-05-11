@@ -1,0 +1,82 @@
+<%- include("partials/header.ejs") %>
+
+    <main>
+        <h1 class="text-primary d-flex justify-content-center align-items-center mb-5">Free to Play Games</h1>
+
+        <div class="row">
+            <% if(locals.games) {%>
+                <% games.forEach((game)=> { %>
+                    <div class="col-md-4 mb-5">
+                        <div class="card mx-auto" style="width: 18rem;">
+                            <img src="<%=game.imageUrl%>" class="card-img-top" height="250" alt="<%=game.title%>">
+                            <div class="card-body">
+                                <% if(game.title) { %>
+                                    <h5 class="card-title">Title: <%=game.title%>
+                                    </h5>
+                                    <% }else{ %>
+                                        <h5 class="card-title">Title: <span class="text-warning">Loading...</span></h5>
+                                        <% } %>
+
+                                            <% if(game.description) { %>
+                                                <p class="card-text">Description: <%=game.description%>
+                                                </p>
+                                                <% }else{ %>
+                                                    <p class="card-text">Description: <span
+                                                            class="text-warning">Loading...</span></p>
+                                                    <% } %>
+                            </div>
+
+                            <ul class="list-group list-group-flush">
+                                <% if(game.genre) { %>
+                                    <li class="list-group-item">Genre: <%=game.genre%>
+                                    </li>
+                                    <% }else{ %>
+                                        <li class="list-group-item">Genre: <span class="text-warning">Loading...</span>
+                                        </li>
+                                        <% } %>
+
+                                            <% if(game.platform) { %>
+                                                <li class="list-group-item text-primary fw-semibold">Platform:
+                                                    <%=game.platform%>
+                                                </li>
+                                                <% }else{ %>
+                                                    <li class="list-group-item text-primary fw-semibold">Platform: <span
+                                                            class="text-warning">Loading...</span>
+                                                        <% } %>
+
+                                                            <% if(game.publisher) { %>
+                                                    <li class="list-group-item">Publisher: <%=game.publisher%>
+                                                    </li>
+                                                    <% }else{ %>
+                                                        <li class="list-group-item">Publisher: <span
+                                                                class="text-warning">Loading...</span>
+                                                        </li>
+                                                        <% } %>
+
+                                                            <% if(game.developer) { %>
+                                                                <li class="list-group-item">Developer:
+                                                                    <%=game.developer%>
+                                                                </li>
+                                                                <% }else{ %>
+                                                                    <li class="list-group-item">
+                                                                        Developer: <span
+                                                                            class="text-warning">Loading...</span>
+                                                                    </li>
+                                                                    <% } %>
+                            </ul>
+
+                            <div class="card-body mx-auto">
+                                <a href="<%=game.url%>" target="_blank" class="btn btn-primary">Visit website</a>
+                            </div>
+                        </div>
+                    </div>
+                    <% }) %>
+
+                        <% }else{ %>
+                            <h1 class="text-center text-warning">No games found</h1>
+                            <% } %>
+        </div>
+    </main>
+
+
+    <%- include("partials/footer.ejs") %>

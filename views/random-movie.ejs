@@ -1,0 +1,75 @@
+<%- include("partials/header.ejs") %>
+
+    <main>
+        <div class="text-info d-flex justify-content-center mb-3">
+            <h3>Hey, let's watch this movie!</h3>
+        </div>
+        <div class="d-flex justify-content-center mb-3">
+            <a href="/random-movie"><button type="button" class="btn btn-info">Pick Again</button></a>
+        </div>
+
+        <div class="row">
+            <% if(locals.movie){ %>
+                <div class="col-md-12 d-flex justify-content-center align-items-center">
+                    <div class="card mx-auto" style="width: 18rem;">
+                        <img src="<%=movie.imageUrl%>" class="card-img-top" height="250" alt="<%=movie.title%>">
+                        <div class="card-body">
+                            <% if(movie.title) { %>
+                                <h5 class="card-title">Title: <%=movie.title%>
+                                </h5>
+                                <% }else{ %>
+                                    <h5 class="card-title">Title: <span class="text-warning">Loading...</span></h5>
+                                    <% } %>
+
+                                        <% if(movie.plot) { %>
+                                            <p class="card-text">Plot: <%=movie.plot%>
+                                            </p>
+                                            <% }else{ %>
+                                                <p class="card-text">Plot: <span class="text-warning">Loading...</span>
+                                                </p>
+                                                <% } %>
+                        </div>
+
+                        <ul class="list-group list-group-flush">
+                            <% if(movie.year) { %>
+                                <li class="list-group-item">Release Year: <%=movie.year%>
+                                </li>
+                                <% }else{ %>
+                                    <li class="list-group-item">Release Year: <span
+                                            class="text-warning">Loading...</span>
+                                    </li>
+                                    <% } %>
+
+                                        <% if(movie.country) { %>
+                                            <li class="list-group-item">Country: <%=movie.country%>
+                                            </li>
+                                            <% }else{ %>
+                                                <li class="list-group-item">Country: <span
+                                                        class="text-warning">Loading...</span>
+                                                    <% } %>
+
+                                                        <% if(movie.rating) { %>
+                                                <li class="list-group-item fw-semibold text-primary">Rating:
+                                                    <%=movie.rating%>
+                                                </li>
+                                                <% }else{ %>
+                                                    <li class="list-group-item fw-semibold text-primary">Rating:
+                                                        <span class="text-warning">Loading...</span>
+                                                    </li>
+                                                    <% } %>
+                        </ul>
+
+                        <div class="card-body mx-auto">
+                            <a href="https://www.youtube.com/results?search_query=<%=movie.title%> movie trailer"
+                                target="_blank" class="btn btn-primary">View
+                                trailer</a>
+                        </div>
+                    </div>
+                </div>
+                <% }else{ %>
+                    <h1 class="text-center text-warning">No movies found</h1>
+                    <% } %>
+        </div>
+    </main>
+
+    <%- include("partials/footer.ejs") %>
